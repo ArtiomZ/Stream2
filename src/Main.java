@@ -15,19 +15,26 @@ public class Main {
                     Education.values()[new Random().nextInt(Education.values().length)])
             );
         }
-        persons.stream()
+        long result = persons.stream()
                 .filter(person -> person.getAge() < 18)
                 .count();
+        System.out.println(result);
 
         List<String> list = persons.stream()
                 .filter(person -> person.getAge() < 27 && person.getAge() > 17)
                 .map(person -> person.getFamily())
                 .collect(Collectors.toList());
+        for (int i = 0; i < 20; i++) {
+            System.out.println(list.get(i));
+        }
 
         List<Person> list1 = persons.stream()
                 .filter(person -> person.getEducation().equals(Education.HIGHER))
                 .filter(person -> person.getAge() > 17 && person.getAge() < 65)
                 .filter(person -> person.getSex().equals(Sex.WOMAN) && person.getAge() < 60)
                 .collect(Collectors.toList());
+        for (int j = 0; j < 20; j++) {
+            System.out.println(list1.get(j));
+        }
     }
 }
